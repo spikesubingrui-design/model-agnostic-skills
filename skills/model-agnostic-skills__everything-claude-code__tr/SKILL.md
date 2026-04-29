@@ -1,0 +1,88 @@
+---
+name: everything-claude-code__tr
+description: SKILL.md
+version: 1.0.0
+author: Converted from Claude Code skill by model-agnostic-skills
+original_repo: unknown
+converted_at: 2026-04-29
+compatible_models: [deepseek, gpt-4o, gpt-4.5, claude-3.5-sonnet, claude-4, qwen-max, qwen-plus, gemini-2.5-pro]
+compatible_frameworks: [openclaw, cursor, continue-dev, windsurf]
+tags: [coding, agent, design, testing, review, planning]
+---
+
+> **Model-Agnostic**: This skill has been converted from Claude Code. It works with any LLM backend.
+---
+name: tr
+description: SKILL.md
+version: 1.0.0
+author: Converted from Your coding agent skill by model-agnostic-skills
+original_repo: unknown
+converted_at: 2026-04-29
+compatible_models: [deepseek, gpt-4o, gpt-4.5, claude-3.5-sonnet, claude-4, qwen-max, qwen-plus, gemini-2.5-pro]
+compatible_frameworks: [openclaw, cursor, continue-dev, windsurf]
+tags: [coding, agent, design, testing, review, planning]
+---
+
+> **Model-Agnostic**: This skill has been converted from Your coding agent. It works with any LLM backend.
+# SKILL.md
+
+Bu dosya, bu depodaki kodlarla çalışırken Your coding agent'a (claude.ai/code) rehberlik sağlar.
+
+## Projeye Genel Bakış
+
+Bu bir **Your coding agent plugin**'idir - üretime hazır agent'lar, skill'ler, hook'lar, komutlar, kurallar ve MCP konfigürasyonlarından oluşan bir koleksiyondur. Proje, Your coding agent kullanarak yazılım geliştirme için test edilmiş iş akışları sağlar.
+
+## Testleri Çalıştırma
+
+```bash
+# Tüm testleri çalıştır
+node tests/run-all.js
+
+# Tekil test dosyalarını çalıştır
+node tests/lib/utils.test.js
+node tests/lib/package-manager.test.js
+node tests/hooks/hooks.test.js
+```
+
+## Mimari
+
+Proje, birkaç temel bileşen halinde organize edilmiştir:
+
+- **agents/** - Delegasyon için özelleşmiş alt agent'lar (planner, code-reviewer, tdd-guide, vb.)
+- **skills/** - İş akışı tanımları ve alan bilgisi (coding standards, patterns, testing)
+- **commands/** - Kullanıcılar tarafından çağrılan slash komutları (/tdd, /plan, /e2e, vb.)
+- **hooks/** - Tetikleyici tabanlı otomasyonlar (session persistence, pre/post-tool hooks)
+- **rules/** - Her zaman takip edilmesi gereken yönergeler (security, coding style, testing requirements)
+- **mcp-configs/** - Harici entegrasyonlar için MCP server konfigürasyonları
+- **scripts/** - Hook'lar ve kurulum için platformlar arası Node.js yardımcı araçları
+- **tests/** - Script'ler ve yardımcı araçlar için test suite
+
+## Temel Komutlar
+
+- `/tdd` - Test-driven development iş akışı
+- `/plan` - Uygulama planlaması
+- `/e2e` - E2E testleri oluştur ve çalıştır
+- `/code-review` - Kalite incelemesi
+- `/build-fix` - Build hatalarını düzelt
+- `/learn` - Oturumlardan kalıpları çıkar
+- `/skill-create` - Git geçmişinden skill'ler oluştur
+
+## Geliştirme Notları
+
+- Package manager algılama: npm, pnpm, yarn, bun (`CLAUDE_PACKAGE_MANAGER` env var veya proje config ile yapılandırılabilir)
+- Platformlar arası: Node.js script'leri aracılığıyla Windows, macOS, Linux desteği
+- Agent formatı: YAML frontmatter ile Markdown (name, description, tools, model)
+- Skill formatı: Ne zaman kullanılır, nasıl çalışır, örnekler için açık bölümler içeren Markdown
+- Hook formatı: Matcher koşulları ve command/notification hook'ları ile JSON
+
+## Katkıda Bulunma
+
+CONTRIBUTING.md'deki formatları takip edin:
+- Agents: Frontmatter ile Markdown (name, description, tools, model)
+- Skills: Açık bölümler (When to Use, How It Works, Examples)
+- Commands: Description frontmatter ile Markdown
+- Hooks: Matcher ve hooks array ile JSON
+
+Dosya isimlendirme: tire ile küçük harfler (örn., `python-reviewer.md`, `tdd-workflow.md`)
+
+
